@@ -1,0 +1,266 @@
+﻿@{
+    ViewData["Title"] = "Sos vos ✨";
+}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: 'Pacifico', cursive;
+        background: radial-gradient(circle at center, #4b1e00, #1a0000);
+        color: #ffe0b2;
+        overflow-x: hidden;
+    }
+
+    canvas#starsCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .content-wrapper {
+        position: relative;
+        z-index: 2;
+        padding: 4rem 1rem;
+        max-width: 1000px;
+        margin: 0 auto;
+        overflow-y: auto;
+    }
+
+    h1 {
+        text-align: center;
+        color: #ffb74d;
+        text-shadow: 0 0 15px #ffa726;
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+
+    .intro-text {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        color: #ffe0b2;
+        text-shadow: 0 0 10px #ffb74d;
+    }
+
+    .promise-list {
+        list-style: none;
+        padding-left: 0;
+        counter-reset: promise-counter;
+    }
+
+        .promise-list li {
+            counter-increment: promise-counter;
+            background-color: rgba(255, 152, 0, 0.1);
+            margin-bottom: 10px;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-left: 55px;
+            color: #fff3e0;
+        }
+
+            .promise-list li::before {
+                content: counter(promise-counter) ".";
+                position: absolute;
+                left: 20px;
+                font-weight: bold;
+                color: #ffcc80;
+            }
+
+    @@media (max-width: 768px) {
+        h1 {
+            font-size: 2rem;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+        }
+
+        .promise-list li {
+            font-size: 1rem;
+            padding-left: 45px;
+        }
+    }
+</style>
+
+
+<canvas id="starsCanvas"></canvas>
+
+<div class="content-wrapper">
+    <h1>Sos vos ✨</h1>
+    <div class="intro-text">
+        Sos la mujer más hermosa de todo el mundo...<br />
+        y de todos los mundos. 🌌<br />
+        Cada estrella en este cielo está brillando solo para recordarte lo mucho que me gustas 💫.
+    </div>
+
+    <ul class="promise-list">
+        <li>Prometo respetar tu tiempo y tus silencios.</li>
+        <li>Prometo cuidar tu corazón como si fuera mío.</li>
+        <li>Prometo nunca hacerte sentir sola estando conmigo.</li>
+        <li>Prometo darte espacio para respirar, pensar y crecer.</li>
+        <li>Prometo admirarte en tus días fuertes y abrazarte en tus días frágiles.</li>
+        <li>Prometo escucharte con el alma, no solo con los oídos.</li>
+        <li>Prometo no interrumpirte cuando estés hablando desde el corazón.</li>
+        <li>Prometo mirarte como si fueras la única estrella del cielo.</li>
+        <li>Prometo celebrar tus logros como si fueran míos.</li>
+        <li>Prometo secarte las lágrimas con amor, no con juicios.</li>
+        <li>Prometo jamás burlarme de tus heridas.</li>
+        <li>Prometo proteger tu paz incluso cuando no estés conmigo.</li>
+        <li>Prometo apoyarte en tus metas, incluso si no las entiendo del todo.</li>
+        <li>Prometo impulsarte, no detenerte.</li>
+        <li>Prometo reír contigo aunque el mundo se caiga.</li>
+        <li>Prometo sorprenderte sin razón.</li>
+        <li>Prometo ser tu lugar seguro.</li>
+        <li>Prometo aprender a amar tus silencios.</li>
+        <li>Prometo nunca minimizar tus emociones.</li>
+        <li>Prometo no huir cuando te pongas vulnerable.</li>
+        <li>Prometo construir contigo, no sobre vos.</li>
+        <li>Prometo nunca hacerte sentir menos de lo que realmente sos.</li>
+        <li>Prometo valorar tu pasado sin temor.</li>
+        <li>Prometo respetar tu historia, incluso si no formo parte de todo.</li>
+        <li>Prometo no competir con tus cicatrices, sino acompañarlas.</li>
+        <li>Prometo escribirte cartas aunque estemos a una llamada.</li>
+        <li>Prometo darte besos en la frente cuando estés cansada.</li>
+        <li>Prometo mirar películas contigo aunque no las entienda.</li>
+        <li>Prometo preguntarte cómo estás… y escuchar de verdad.</li>
+        <li>Prometo bailar contigo aunque no haya música.</li>
+        <li>Prometo tomar tu mano en la oscuridad.</li>
+        <li>Prometo recordarte lo valiosa que sos todos los días.</li>
+        <li>Prometo ser paciente con tus miedos.</li>
+        <li>Prometo aprender de vos.</li>
+        <li>Prometo reírme contigo, no de ti.</li>
+        <li>Prometo no soltarte por orgullo.</li>
+        <li>Prometo no hacerte sentir culpable por sentir.</li>
+        <li>Prometo darte flores sin motivo.</li>
+        <li>Prometo recordarte lo bonita que sos, incluso en pijama.</li>
+        <li>Prometo escucharte incluso cuando no digas nada.</li>
+        <li>Prometo abrazarte más fuerte cuando sientas que te caés.</li>
+        <li>Prometo perdonar tus errores y aprender de los míos.</li>
+        <li>Prometo no esconder lo que siento por vos.</li>
+        <li>Prometo no irme cuando estés en tu peor versión.</li>
+        <li>Prometo ayudarte a sanar, no a herirte más.</li>
+        <li>Prometo amarte sin prisa, sin presión, sin condiciones.</li>
+        <li>Prometo darte seguridad, no dudas.</li>
+        <li>Prometo no forzar, solo fluir.</li>
+        <li>Prometo ser tu apoyo, no tu carga.</li>
+        <li>Prometo escribirte canciones aunque no sepa cantar.</li>
+        <li>Prometo mirar el cielo contigo en silencio.</li>
+        <li>Prometo decir “te quiero” con hechos, no solo con palabras.</li>
+        <li>Prometo ser tu hogar, no tu prisión.</li>
+        <li>Prometo abrazarte como si fueras todo mi universo.</li>
+        <li>Prometo no ser una herida más en tu historia.</li>
+        <li>Prometo cuidar tu fe y tu espiritualidad.</li>
+        <li>Prometo respetar tus límites.</li>
+        <li>Prometo elegirte incluso cuando el mundo esté en contra.</li>
+        <li>Prometo construir contigo, paso a paso.</li>
+        <li>Prometo no irme cuando estés rota.</li>
+        <li>Prometo mirar tus cicatrices sin asustarme.</li>
+        <li>Prometo que no tenés que ser fuerte todo el tiempo conmigo.</li>
+        <li>Prometo verte incluso cuando te ocultes.</li>
+        <li>Prometo darte mi mejor versión, no solo la más fácil.</li>
+        <li>Prometo ser honesta aunque duela.</li>
+        <li>Prometo no dejar que te apagues.</li>
+        <li>Prometo cuidar tu energía.</li>
+        <li>Prometo no usar tu pasado en tu contra.</li>
+        <li>Prometo sostenerte en tus batallas internas.</li>
+        <li>Prometo elegirte cada día, incluso cuando esté cansada.</li>
+        <li>Prometo no usar tus miedos como excusas.</li>
+        <li>Prometo abrazarte aunque estés llena de dudas.</li>
+        <li>Prometo no mentirte nunca.</li>
+        <li>Prometo que tu sonrisa será mi prioridad.</li>
+        <li>Prometo que tus logros serán motivo de fiesta.</li>
+        <li>Prometo decirte siempre lo orgullosa que estoy de vos.</li>
+        <li>Prometo ir por vos incluso al fin del mundo.</li>
+        <li>Prometo caminar lento si te cansas.</li>
+        <li>Prometo darte amor sin condiciones.</li>
+        <li>Prometo no cambiarte, solo acompañarte.</li>
+        <li>Prometo leer contigo, viajar contigo, soñar contigo.</li>
+        <li>Prometo darte luz cuando el mundo parezca oscuro.</li>
+        <li>Prometo que si te caés, yo me siento a tu lado.</li>
+        <li>Prometo nunca minimizar lo que sentís.</li>
+        <li>Prometo no compararte jamás.</li>
+        <li>Prometo proteger tu esencia.</li>
+        <li>Prometo hacer que cada día valga.</li>
+        <li>Prometo cocinarte tu sopa favorita, aunque me quede horrible.</li>
+        <li>Prometo amarte como sos, no como quiero que seas.</li>
+        <li>Prometo no buscar perfección, sino conexión.</li>
+        <li>Prometo tomar tu mano incluso cuando tiemble.</li>
+        <li>Prometo decirte “gracias” por existir.</li>
+        <li>Prometo ver el mundo a través de tus ojos.</li>
+        <li>Prometo escribir mil páginas contigo.</li>
+        <li>Prometo bailar bajo la lluvia con vos.</li>
+        <li>Prometo que lo nuestro no será un error más.</li>
+        <li>Prometo que no estás sola en tu proceso.</li>
+        <li>Prometo que valés cada intento, cada espera, cada lucha.</li>
+        <li>Prometo que pase lo que pase, siempre voy a querer verte bien.</li>
+        <li><strong>Prometo nunca dejar de elegirte... incluso en los días en que no te elijas vos misma. 💖</strong></li>
+    </ul>
+</div>
+
+<script>
+    const canvas = document.getElementById('starsCanvas');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    function createStars(count) {
+        stars = [];
+        for (let i = 0; i < count; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: Math.random() * 1.5,
+                d: Math.random() * 0.5 + 0.5
+            });
+        }
+    }
+
+    function drawStars() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        for (let s of stars) {
+            ctx.moveTo(s.x, s.y);
+            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2, true);
+        }
+        ctx.fill();
+        moveStars();
+    }
+
+    function moveStars() {
+        for (let s of stars) {
+            s.y += s.d;
+            if (s.y > canvas.height) {
+                s.y = 0;
+                s.x = Math.random() * canvas.width;
+            }
+        }
+    }
+
+    function animateStars() {
+        drawStars();
+        requestAnimationFrame(animateStars);
+    }
+
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+        createStars(150);
+    });
+
+    resizeCanvas();
+    createStars(150);
+    animateStars();
+</script>
