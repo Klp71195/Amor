@@ -22,14 +22,15 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        z-index: -1;
+        z-index: -1; /* <-- lo más importante */
     }
+
 
     .overlay {
         position: relative;
         z-index: 2;
         text-align: center;
-        padding: 5vh 20px 100px;
+        padding-top: 8vh 20px 200px;
     }
 
     .intro-text {
@@ -37,7 +38,6 @@
         font-family: 'Pacifico', cursive;
         color: #ff8c00;
         animation: fadeInScale 3s ease-in-out forwards;
-        margin-bottom: 40px;
     }
 
     @@keyframes fadeInScale {
@@ -79,162 +79,52 @@
         filter: brightness(1.2);
     }
 
-    /* Flip cards para Cosas que amas tú */
-    .flip-container {
-        perspective: 1200px;
-        display: inline-block;
+    /* Circulos para Cosas que amas tú: fondo rosado */
+    .heart-img {
+        width: 110px;
+        height: 110px;
         margin: 20px;
-        width: 280px;
-        height: 350px;
-    }
-
-    .flipper {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        transition: 0.8s;
-        transform-style: preserve-3d;
-        box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
-        border-radius: 25px;
-        cursor: pointer;
+        border-radius: 50%;
         background: radial-gradient(circle at 30% 30%, #ff69b4, #c2185b);
-        color: white;
+        box-shadow: 0 0 25px rgba(255, 105, 180, 0.9);
+        cursor: pointer;
+        transition: transform 0.4s ease, filter 0.3s;
+        display: inline-block;
+        animation: glowPink 2s infinite alternate;
     }
 
-    .flip-container:hover .flipper,
-    .flip-container.flip .flipper {
-        transform: rotateY(180deg);
-        box-shadow: 0 0 25px rgba(255, 105, 180, 1);
-    }
-
-    .front, .back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-        border-radius: 25px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding: 20px;
-        box-shadow: inset 0 0 30px rgba(255, 105, 180, 0.7);
-    }
-
-    .front img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-        border-radius: 20px;
-        margin-bottom: 15px;
-        box-shadow: 0 0 15px #ff69b4aa;
-        flex-shrink: 0;
-    }
-
-    .front h3 {
-        font-family: 'Pacifico', cursive;
-        font-size: 1.5rem;
-        margin: 0;
-        flex-shrink: 0;
-        text-shadow: 1px 1px 5px #bb3577aa;
-    }
-
-    .back {
-        background: rgba(255, 105, 180, 0.85);
-        color: #fff3d1;
-        transform: rotateY(180deg);
-        box-shadow: 0 0 30px #ff69b488;
-        font-size: 1.1rem;
-        padding-top: 35px;
-        text-align: left;
-        overflow-y: auto;
-    }
-
-    .back h3 {
-        font-family: 'Pacifico', cursive;
-        font-size: 1.4rem;
-        margin-top: 0;
-        margin-bottom: 15px;
-        text-align: center;
-        color: #fff9c4;
-    }
-
-    .back p {
-        padding: 0 15px;
-        line-height: 1.3;
-    }
-
-    .back::-webkit-scrollbar {
-        width: 6px;
-    }
-
-    .back::-webkit-scrollbar-thumb {
-        background-color: #ff69b4;
-        border-radius: 20px;
-    }
-
-    /* Títulos sección */
-    .section-title {
-        font-size: 2rem;
-        margin-top: 50px;
-        margin-bottom: 25px;
-        color: #ffa500;
-        font-family: 'Pacifico', cursive;
-        text-shadow: 1px 1px 4px #ff8c0088;
-    }
-
-    /* Responsive */
-    @@media (max-width: 768px) {
-        .planet-img {
-            width: 80px;
-            height: 80px;
-            margin: 10px;
+    @@keyframes glowPink {
+        from {
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
         }
-
-        .flip-container {
-            width: 90vw;
-            height: auto;
-            margin: 20px auto;
-        }
-
-        .front img {
-            height: 220px;
-        }
-
-        .front h3 {
-            font-size: 1.3rem;
-        }
-
-        .back {
-            font-size: 1rem;
-        }
-
-        .section-title {
-            font-size: 1.6rem;
-            margin-top: 30px;
-            margin-bottom: 20px;
+        to {
+            box-shadow: 0 0 25px rgba(255, 105, 180, 1);
         }
     }
 
-    /* Astronauta flotante */
+    .heart-img:hover {
+        transform: scale(1.2) rotate(3deg);
+        filter: brightness(1.2);
+    }
+
+   .astronaut {
+    width: 400px;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 3;
+    animation: float 6s ease-in-out infinite;
+}
+
+@@media (max-width: 768px) {
     .astronaut {
-        width: 400px;
-        position: fixed;
-        bottom: 20px;
-        right: 30px;
-        z-index: 3;
-        animation: float 6s ease-in-out infinite;
+        width: 200px;
+        bottom: 10px;
+        right: 10px;
+        opacity: 0.5;
     }
+}
 
-    @@media (max-width: 768px) {
-        .astronaut {
-            width: 200px;
-            bottom: 10px;
-            right: 10px;
-            opacity: 0.5;
-        }
-    }
 
     @@keyframes float {
         0%, 100% {
@@ -245,10 +135,9 @@
         }
     }
 
-    /* Memory boxes para momentos */
     .memory-box {
         display: none;
-        padding: 10px;
+        padding: 30px;
         background-color: rgba(255, 255, 255, 0.1);
         border-radius: 20px;
         margin: 20px auto;
@@ -268,6 +157,33 @@
             transform: translateY(0);
         }
     }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin-top: 30px;
+        color: #ffa500;
+    }
+    @@media (max-width: 768px) {
+    .planet-img, .heart-img {
+        width: 80px;
+        height: 80px;
+        margin: 10px;
+    }
+
+    .intro-text {
+        font-size: 1.8rem;
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    .memory-box {
+        padding: 20px;
+        font-size: 0.95rem;
+    }
+}
+
 </style>
 
 <canvas id="starfield"></canvas>
@@ -278,10 +194,10 @@
     <div class="section-title">Momentos ✨</div>
     <div class="mt-3" id="planetContainer"></div>
 
-    <div id="memoriesContainer"></div>
+    <div class="section-title">Cosas que ahora se de ti 💖</div>
+    <div class="mt-3" id="favoritesContainer"></div>
 
-    <div class="section-title">Cosas que ahora sé de ti 💖</div>
-    <div id="cosasContainer"></div>
+    <div id="memoriesContainer"></div>
 </div>
 
 <img src="/images/astro.png" class="astronaut" alt="Astronauta flotante" />
@@ -303,7 +219,7 @@
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
                 r: Math.random() * 1.5,
-                d: Math.random()
+                d: Math.random() * 1
             });
         }
     }
@@ -336,65 +252,59 @@
         requestAnimationFrame(animate);
     }
 
-    // Momentos (igual que antes)
-    const momentos = [
-        { id: 1, title: 'Como puedo hablarle a ella??', date: '3 junio 2025', img: '3junio.jpg', desc: 'Ese día estaba toda contenta jaja ahi intentandometerle conversacion, cosa que pude preguntarle por el grupo.' },
-        { id: 2, title: 'La primera no funciono jaja', date: '8 de junio 2025', img: 'chingones.jpg', desc: 'Me toco hablarte de frente y estaba cagada jaja pero te saque que tu comida era la sopa azteca asi que te mande ese lugar y tu respuesta fue que era muy romantico jaja y yo mod lagarta on diciendole entonces n la puedo llevar? jaja' },
-        { id: 3, title: 'Esta la voy a incluir prque me da risa jaja"', date: '9 de junio', img: 'alarma.jpg', desc: 'Me respondiste en medio de la madrugada jajaja y me dijo que ponia como mil alarmas y lo unico que pense fue y cuando viva conmigo colera me va a dar que me despierte yo y no ella por sus alarmas' },
-        { id: 4, title: '20/10"', date: '13 de junio', img: 'mamacita.jpg', desc: '"Demasiado 10/10, yo diria 20/10 jaja pa que negarselo??? si usted es la mujer mas preciosa de todo el mundo?' },
-        { id: 5, title: 'Wopper que enamora jaja ', date: '15 de junio', img: 'wopper.jpg', desc: 'Tocaba tirar mas indirectas y bueno cuando la labia no funciona la comida si jaja  y bueno te dije que t me gustabas ese mismo dia asi que para mi avance mucho jaja' },
-        { id: 6, title: 'Juan Gabriel de la suerte ', date: '16 de junio', img: 'juan.jpg', desc: 'Buen ese dia estaba decidida la verdad jaja no solo el meme, el haberte llevado a tu casa, un besito  que me dejo loca pero mi ice cube me freno riquisimo jaja inceramente crei que depues de lo que me dijiste no habria chance contigo, pero bueno se lo puse a Diosito la verdad ' },
-        { id: 7, title: 'Y como mami pario una macha jaja ', date: '17 de junio', img: 'vencido.jpg', desc: 'Como estaba aguevada un poco por lo de la noche anterior no sabía cómo volver a hablarte, pero bueno te dije que te veías hermosa desde la pura mañana y además te pedí llevarte de nuevo...' },
-        { id: 8, title: 'Pero Dios sí escucha', date: '18 de junio', img: 'salva.jpg', desc: 'My ice cube me puso eso al otro día, desde temprano y para mí fue como una señal y quizás es bobo, yo sé... pero fue como analizar tu personalidad y dije quizás lo único es que no está lista y tengo que demostrarle que puedo esperarla hasta que lo esté.' },
-        { id: 9, title: 'Juré que mi vista favorita eran los miradores hasta que preferí verte a ti que a una noche estrellada', date: '18 de junio', img: 'san juan.jpg', desc: 'Esta para mí fue de las mejores noches que he tenido, no importa que al finalizar al tomar mi mano me dijeras que nada serio, hermosa yo ya estaba decidida a esperarte todo lo que fuera necesario...' },
-        { id: 10, title: 'Dedicarte canciones porque sí', date: '18 de junio', desc: `Te dediqué esta canción<br/><br/>
-            <video width="100%" controls style="border-radius: 10px; box-shadow: 0 0 15px rgba(255,255,255,0.2); margin-top: 15px;">
-                <source src="/images/beele.mp4" type="video/mp4">
-                Tu navegador no soporta el video.
-            </video>`
-        },
-        { id: 11, title: 'Dedicarte canciones porque sí', date: '19 de junio', desc: `<br/><br/>
-            <video width="100%" controls style="border-radius: 10px; box-shadow: 0 0 15px rgba(255,255,255,0.2); margin-top: 15px;">
-                <source src="/images/bruno.mp4" type="video/mp4">
-                Tu navegador no soporta el video.
-            </video>`
-        },
-        { id: 12, title: 'Primera noche que creo que no nos percatamos de la hora', date: '21 de junio', img: 'san juan.jpg', desc: 'Pero si te soy sincera, disfruté saber de tus películas, incluso ver una por ti jaja hablar de todo y nada, conocerte y que toda la conversación fuera así fácil contigo no sé.' },
-        { id: 13, title: 'Este día lo valió todo', date: '22 de junio', img: 'mac.jpg', desc: 'Verte desde la mañana me marcó todo, usted no sabe el grado de felicidad que tengo al recordar este día de inicio a fin mi amor, es todo, es haberte tenido junto a un amanecer precioso...' },
-        { id: 14, title: 'Mi chica', date: '24 de junio', img: 'manos.jpg', desc: 'Escucharte hablar de tu relación pasada, escucharte contarme cosas que son tan tuyas, abrazadas a mí, tus momentos de debilidad, de fortaleza, tus sueños, tus metas, besarte tanto...' },
-        { id: 15, title: 'MY ice cube regalándome felicidad jaja', date: '25 de junio', img: 'amor.jpg', desc: 'Déjeme rajar este momento jajaja' },
-    ];
-
-    // Datos de Cosas que amas tú (para las flip cards)
-    const cosas = [
-        { id: 101, title: "Significado del nombre Alicia", img: "ALI.jpg", desc: "Significa 'de noble linaje', 'verdad' y 'protección'. Como tú, llena de luz y fuerza noble en mi vida. También decía que es la mujer más preciosa de todo el mundo y de todos los mundos, ahhh y decía que valiosa también." },
-        { id: 102, title: "Cumpleaños: 10/9/1997", img: "cumple.jpg", desc: "La fecha más importante para mí. Porque en ese día nació la estrella que ilumina mi universo. 🌟" },
-        { id: 103, title: "Color Favorito", img: "color.jpg", desc: "Tu color favorito es tan vibrante como tu alma y la alegría que traes a mi vida." },
-        { id: 104, title: "Película Favorita: Interestelar", img: "peli.jpg", desc: "No entendía Interestelar, jaja... pero gracias a ti logré entenderla." },
-        { id: 105, title: "Estudio", img: "finanzas.jpg", desc: "Apenas para que me eduques con la plata jajaja." },
-        { id: 106, title: "Vive en", img: "orosi.jpg", desc: "Vive en el cu del mundo, pero jamás me cansaré de ir por ti. ❤️" },
-        { id: 107, title: "Lugar Favorito", img: "playa.jpg", desc: "Conoceremos todas las playas del mundo con tal de verte feliz." },
-        { id: 108, title: "Cosa Favorita", img: "planetas.jpg", desc: "¿Eres consciente de que eres más hermosa que todos los planetas juntos? 🌌" },
-        { id: 109, title: "Signo Zodiacal: Virgo", img: "virgo.jpg", desc: "Eres fuerte y decidida, pero también guardas una sensibilidad que pocos conocen. Aunque la vida te ha golpeado, siempre te levantas con una sonrisa..." },
-        { id: 110, title: "Religión: Católica", img: "benito.jpg", desc: "Antes de preguntártelo te había preguntado por la cadena en tu cuello y pues bueno desde ahí supe jaja, lo que he leído es que ayuda contra el mal y que te queda hermosa." },
-        { id: 111, title: "Comida favorita", img: "sopa.jpg", desc: "Acá el amor me tiene intentando hacerte la mejor sopa de la historia para que si no le entro por otros lados sea por la comida jaja." }
-    ];
-
     function showMemory(id) {
         document.querySelectorAll('.memory-box').forEach(m => m.style.display = 'none');
         const box = document.getElementById('memory' + id);
         if (box) box.style.display = 'block';
-        window.scrollTo({ top: box.offsetTop - 100, behavior: 'smooth' });
     }
 
-    // Generar Momentos con los círculos naranjas (igual que antes)
-    function generateMomentos() {
+    function generateMemories() {
         const planetContainer = document.getElementById('planetContainer');
+        const favoritesContainer = document.getElementById('favoritesContainer');
         const memoriesContainer = document.getElementById('memoriesContainer');
-        planetContainer.innerHTML = '';
-        memoriesContainer.innerHTML = '';
 
-        momentos.forEach(m => {
+        // Momentos
+        const moments = [
+            { id: 1, title: 'Como puedo hablarle a ella??', date: '3 junio 2025', img: '3junio.jpg', desc: 'Ese día estaba toda contenta jaja ahi intentandometerle conversacion, cosa que pude preguntarle por el grupo.' },
+            { id: 2, title: 'La primera no funciono jaja', date: '8 de junio 2025', img: 'chingones.jpg', desc: 'Me toco hablarte de frente y estaba cagada jaja pero te saque que tu comida era la sopa azteca asi que te mande ese lugar y tu respuesta fue que era muy romantico jaja y yo mod lagarta on diciendole entonces n la puedo llevar? jaja ' },
+            { id: 3, title: 'Esta la voy a incluir prque me da risa jaja"', date: '9 de junio', img: 'alarma.jpg', desc: 'Me respondiste en medio de la madrugada jajaja y me dijo que ponia como mil alarmas y lo unico que pense fue y cuando viva conmigo colera me va a dar que me despierte yo y no ella por sus alarmas' },
+            { id: 4, title: '20/10"', date: '13 de junio', img: 'mamacita.jpg', desc: '"Demasiado 10/10, yo diria 20/10 jaja pa que negarselo??? si usted es la mujer mas preciosa de todo el mundo?' },
+            { id: 5, title: 'Wopper que enamora jaja ', date: '15 de junio', img: 'wopper.jpg', desc: 'Tocaba tirar mas indirectas y bueno cuando la labia no funciona la comida si jaja  y bueno te dije que t me gustabas ese mismo dia asi que para mi avance mucho jaja' },
+            { id: 6, title: 'Juan Gabriel de la suerte ', date: '16 de junio', img: 'juan.jpg', desc: 'Buen ese dia estaba decidida la verdad jaja no solo el meme, el haberte llevado a tu casa, un besito  que me dejo loca pero mi ice cube me freno riquisimo jaja inceramente crei que depues de lo que me dijiste no habria chance contigo, pero bueno se lo puse a Diosito la verdad ' },
+            { id: 7, title: 'Y como mami pario una macha jaja ', date: '17 de junio', img: 'vencido.jpg', desc: 'Como estaba aguevada un poco por lo de la noche anterior no sabia como volver a hablarte, pero bueno te dije que te veias hermosa desde la pura mañana y ademas te pedi llevarte de nuevo, sabes? este dia en la noche cuando te bajaste yo dije mae no tengo ninguna posibilidad con ella, porque ese dia fuiste la version mas fria de ti y ahi si te confieso que yo venia en ese camino para arriba en medio de la nada porque me amndo horrible jaja y decia mae Dios no creo que me hagas que me guste alguien y que me interese alguien que no me pela, y mejor iba a tomar distancia porque no queria ser algo feo para vos ' },
+            { id: 8, title: 'Peero Dios si escucha  ', date: '18 de junio', img: 'salva.jpg', desc: 'My ice cube me puso eso al otro dia, desde temprano y para mi fue como una señal y quizas es bobo, yo se.. pero fue como analizar tu personalidad y dije quizas lo unico es que no esta lista y yo tengo que demostrarle que puedo esperarla hasta que lo este  ' },
+            { id: 9, title: 'Jure que mi vista favorita eran los miradores hasta que preferi verte a ti que a una noche estrellada ', date: '18 de junio', img: 'san juan.jpg', desc: 'Esta para mi fue de las mejores noches que he tenido, no importa que al finalizar al tomar mi mano me dijeras que nada serio, hermosa yo ya estaba decidida a esperarte todo lo que fuera necesario, tus besos, tus abrazos esa noche me hicieron darme cuenta que yo quiero hacer que esto valga' },
+            {
+                id: 10,
+                title: 'Dedicarte canciones porque si',
+                date: '18 de junio',
+            
+               desc: `Te dedique esta cancion 
+        <br/><br/>
+        <video width="100%" controls style="border-radius: 10px; box-shadow: 0 0 15px rgba(255,255,255,0.2); margin-top: 15px;">
+            <source src="/images/beele.mp4" type="video/mp4">
+            Tu navegador no soporta el video.
+        </video>`
+            },
+    {
+                id: 11,
+                title: 'Dedicarte canciones porque si',
+                date: '19 de junio',
+
+                desc: `
+            <br/><br/>
+            <video width="100%" controls style="border-radius: 10px; box-shadow: 0 0 15px rgba(255,255,255,0.2); margin-top: 15px;">
+                <source src="/images/bruno.mp4" type="video/mp4">
+                Tu navegador no soporta el video.
+            </video>`
+            },
+             { id: 12, title: 'Primera noche que creo que no nos percatamos de la hora ', date: '21 de junio', img: 'san juan.jpg', desc: 'Pero si te soy sincera, disfrute saber de tus peliculas, incluso ver una por ti jaja hablar de todo y nada, conocerte y que toda la conversacion fuera asi facil contigo no se ' },
+            { id: 13, title: 'Este dia lo valio todo', date: '22 de junio', img: 'mac.jpg', desc: 'Verte desde la mañana me marco todo, usted no sabe el grado de felicidad que tengo al recordar este dia de inicio a fin mi amor, es todo, es haberte tenido junto a un amanecer precioso, fue almorzar juntas, fue recogerte y terminar esa noche abrazada a ti... lo valio todo sabes?' },
+            { id: 14, title: 'Mi chica ', date: '24 de junio', img: 'manos.jpg', desc: 'Escucharte hablar de tu relacion pasada, escucharte contarme cosas que son tan tuyas, abrazadas a mi, tu momentos de debilidad, de fortaleza, tus sueños, tus metas, besarte tanto, quererte tanto y tenerte ahi, junto a mi... esa noche me hizo entender que no existe ser humano mas valioso que tu, mas delicado a la hora de querer y a quien mas deseo ver plena y feliz cada dia.. eres tu a la persona que quiero aportarle lo mejor que tengo para que tu mundo sea aun mejor, eres esa mujer que quiero cuidar, proteger y chinear por el resto de mis dias y pulir cada uno de mis defectos para ser mejor para ti y merecerte..' },
+            { id: 15, title: 'MY ice cube regalandome felicidad jaja  ', date: '25 de junio', img: 'amor.jpg', desc: 'Dejeme rajar este momento jajaja ' },
+        ];
+
+        moments.forEach(m => {
             const icon = document.createElement('div');
             icon.className = 'planet-img';
             icon.title = m.title;
@@ -403,81 +313,122 @@
             const memoryDiv = document.createElement('div');
             memoryDiv.id = 'memory' + m.id;
             memoryDiv.className = 'memory-box';
-            memoryDiv.innerHTML = `
-                <h3>${m.date ? m.date + ' - ' : ''}${m.title}</h3>
-                ${m.img ? `<img src="/images/${m.img}" alt="${m.title}" style="max-width:100%; border-radius: 10px; margin-bottom: 15px;"/>` : ''}
+            memoryDiv.innerHTML = `<h3>${m.date ? m.date + ' - ' : ''}${m.title}</h3>
+                <img src="/images/${m.img}" alt="${m.title}" style="max-width:100%; border-radius: 10px; margin-bottom: 15px;"/>
                 <p>${m.desc}</p>`;
             memoriesContainer.appendChild(memoryDiv);
 
             planetContainer.appendChild(icon);
         });
-    }
 
-    // Crear las flip cards para cosas que amas tú
-    function createFlipCards(dataArray, containerId) {
-        const container = document.getElementById(containerId);
-        container.innerHTML = '';
+        // Cosas que amas tú
+        const favorites = [
+            {
+                id: 101,
+                title: "Significado del nombre Alicia",
+                img: "ALI.jpg",
+                desc: "El nombre Alicia significa 'de noble linaje', 'verdad' y 'protección'. Como tú, llena de luz y fuerza noble en mi vida. Tambien decia que si solo se apellida Chavez Brenes entonces que es la mujer mas preciosa de todo el mundo y de todos los mundos, ahhh y decia que valiosa tambien"
+            },
+            {
+                id: 102,
+                title: "Cumpleaños: 10/9/1997",
+                img: "cumple.jpg",
+                desc: "La fecha más importante para mí. Porque en ese día nació la estrella que ilumina mi universo. 🌟"
+            },
+            {
+                id: 103,
+                title: "Color Favorito",
+                img: "color.jpg",
+                desc: "Tu color favorito es tan vibrante como tu alma y la alegría que traes a mi vida."
+            },
+            {
+                id: 104,
+                title: "Película Favorita: Interestelar",
+                img: "peli.jpg",
+                desc: "No entendía Interestelar, jaja... pero gracias a ti logré entenderla ."
+            },
+            {
+                id: 105,
+                title: "Estudio",
+                img: "finanzas.jpg",
+                desc: "Apenas para que me eduques con la plata jajaja. ."
+            },
+            {
+                id: 106,
+                title: "Vive en",
+                img: "orosi.jpg",
+                desc: "Vive en el cu del mundo, pero jamás me cansaré de ir por ti . ❤️"
+            },
+            {
+                id: 107,
+                title: "Lugar Favorito",
+                img: "playa.jpg",
+                desc: "Conoceremos todas las playas del mundo con tal de verte feliz."
+            },
+            {
+                id: 108,
+                title: "Cosa Favorita",
+                img: "planetas.jpg",
+                desc: "¿Eres consciente de que eres más hermosa que todos los planetas juntos? 🌌"
+            },
+            {
+                id: 109,
+                title: "Signo Zodiacal: Virgo",
+                img: "virgo.jpg",
+                desc: "Eres fuerte y decidida, pero también guardas una sensibilidad que pocos conocen. Aunque la vida te ha golpeado, siempre te levantas con una sonrisa. Prefieres guardar tus emociones, pero en el fondo tienes un corazón noble y lleno de luz."
+            },
 
-        dataArray.forEach(item => {
-            const card = document.createElement('div');
-            card.className = 'flip-container';
+            {
+                id: 110,
+                title: "Religion: Catolica",
+                img: "benito.jpg",
+                desc: "Antes de preguntartelo te habia preguntado por la cadena en tu cuello y pues bueno desde ahi supe jaja, lo que he leido es que ayuda contra el mal y  que te queda hermosa "
+            },
 
-            card.innerHTML = `
-                <div class="flipper">
-                    <div class="front">
-                        ${item.img ? `<img src="/images/${item.img}" alt="${item.title}"/>` : ''}
-                        <h3>${item.title}</h3>
-                    </div>
-                    <div class="back">
-                        <h3>${item.title}</h3>
-                        <p>${item.desc}</p>
-                    </div>
-                </div>
-            `;
+            {
+                id: 111,
+                title: "Comida favorita",
+                img: "sopa.jpg",
+                desc: "Aca el amor me tiene intentando hacerte la mejor sopa de la historia para que si no le entro por otros lados sea por la comida jaja  "
+            }
 
-            card.addEventListener('click', () => {
-                card.classList.toggle('flip');
-            });
 
-            container.appendChild(card);
+
+        ];
+
+        favorites.forEach(fav => {
+            const icon = document.createElement('div');
+            icon.className = 'heart-img';
+            icon.title = fav.title;
+            icon.onclick = () => showMemory(fav.id);
+
+            const memoryDiv = document.createElement('div');
+            memoryDiv.id = 'memory' + fav.id;
+            memoryDiv.className = 'memory-box';
+            memoryDiv.innerHTML = `<h3>${fav.title}</h3>
+                <img src="/images/${fav.img}" alt="${fav.title}" style="max-width:100%; border-radius: 10px; margin-bottom: 15px;"/>
+                <p>${fav.desc}</p>`;
+            memoriesContainer.appendChild(memoryDiv);
+
+            favoritesContainer.appendChild(icon);
         });
     }
 
-    // Música de fondo
     const backgroundMusic = new Audio('/images/Paratuamor.mp3');
     backgroundMusic.loop = true;
     backgroundMusic.play().catch(() => {
-        document.addEventListener('click', () => backgroundMusic.play());
+        document.addEventListener('click', () => {
+            backgroundMusic.play();
+        }, { once: true });
     });
 
-    // Animación texto intro
-    function introAnimation() {
-        const text = document.getElementById('introText');
-        let scale = 1;
-        let growing = true;
-        setInterval(() => {
-            if (growing) {
-                scale += 0.01;
-                if (scale > 1.1) growing = false;
-            } else {
-                scale -= 0.01;
-                if (scale < 1) growing = true;
-            }
-            text.style.transform = `scale(${scale})`;
-        }, 30);
-    }
-
-    window.onload = () => {
+    window.addEventListener('resize', () => {
         resizeCanvas();
         createStars();
-        animate();
-        generateMomentos();
-        createFlipCards(cosas, 'cosasContainer');
-        introAnimation();
-    };
+    });
 
-    window.onresize = () => {
-        resizeCanvas();
-        createStars();
-    };
+    resizeCanvas();
+    createStars();
+    animate();
+    generateMemories();
 </script>
